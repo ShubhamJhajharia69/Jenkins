@@ -29,6 +29,13 @@ pipeline {
                 echo ' Deploying...'
                 sh 'echo "Deployment done"'
             }
+        post {
+        success {
+            echo 'Pipeline executed successfully! - Updated Jenkinsfile'
+        }
+        failure {
+            echo 'Pipeline failed!'
+        }
         }
     }
 }
