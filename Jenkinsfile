@@ -8,34 +8,39 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                echo ' Checking out code...'
+                echo 'Checking out code from Git...'
                 checkout scm
             }
         }
+        
         stage('Build') {
             steps {
-                echo ' Building project...'
-                sh 'echo "Build successful"'
+                echo 'Building the project...'
+                bat 'echo Build completed successfully'
             }
         }
+        
         stage('Test') {
             steps {
-                echo ' Running tests...'
-                sh 'echo "Tests passed"'
+                echo 'Running tests...'
+                bat 'echo All tests passed'
             }
         }
+        
         stage('Deploy') {
             steps {
-                echo ' Deploying...'
-                sh 'echo "Deployment done"'
+                echo 'Deploying application...'
+                bat 'echo Deployment successful'
             }
-        post {
+        }
+    }
+    
+    post {
         success {
-            echo 'Pipeline executed successfully! - Updated Jenkinsfile'
+            echo 'Pipeline executed successfully!'
         }
         failure {
             echo 'Pipeline failed!'
-        }
         }
     }
 }
